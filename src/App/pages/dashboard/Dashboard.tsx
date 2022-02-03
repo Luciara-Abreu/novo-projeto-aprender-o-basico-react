@@ -1,6 +1,12 @@
+const Button = () => {
+  return <button> Clique aqui!</button>
+}
 
 export const Dashboard = () => {
   return (
-    <p>Dashboard qui</p>
-  )
+    <div>
+      <p>Dashboard</p>
+      <Button />
+    </div>
+  );
 }

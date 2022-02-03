@@ -1,8 +1,18 @@
-export function Home() {
 
-  <div>
-    <h1> OLA!! </h1>
-  </div>
+const Button = () => {
+  return (
+    <div>
+      <p>Home Button</p>
+      <button />
+    </div>
+  )
+}
 
+export const Home = () => {
+  return (
+    <div>
+      <Button />
+    </div>
+  );
 }
 
