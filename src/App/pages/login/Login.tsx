@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
   const history = useHistory();
+
+  const inputPasswordRef = useRef<HTMLInputElement>(null);
 
   //pegar a senha e e-mails digitados no input. 
   //Essa linha 29 vai salvar o que digitarmos no campo input e-mail -> onChange={e => setEmail(e.target.value)}
@@ -62,15 +64,26 @@ export const Login = () => {
 
           <label htmlFor="">
             <span>Email </span>
-            <input value={email} onChange={e => setEmail(e.target.value)} />
+            <input
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' ? inputPasswordRef.current?.focus() : undefined}
+            />
           </label>
 
           <label htmlFor="">
             <span>Senha </span>
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+            <input
+              type="password"
+              value={password}
+              ref={inputPasswordRef}
+              onChange={e => setPassword(e.target.value)} />
           </label>
 
-          <button type="button" onClick={handleEntrar}>
+          <button
+            type="button"
+            onClick={handleEntrar}
+          >
             Entrar
           </button>
           <p>Quantidade de caracteres no e-mail é: {emailLength}</p>
