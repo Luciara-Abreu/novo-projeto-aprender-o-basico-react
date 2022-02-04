@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
@@ -14,7 +14,36 @@ export const Login = () => {
     console.log(password)
   }
 
+  /**
+   * Se eu coloco esse if fora do useEffect a cada letra digitada nos campos de
+   * input da página ele ia rodar o if e o else perguntando para o usuário se 
+   * ele quer logar. 
+   * Dentro do useEffect, por causa do segundo paramentro que é um array que pode 
+   * ou não ser vazio, ele só vai fazer essa função uma unica vez. 
+   * Obs.: Se usarmos o useEffect sem o segundo parametro ele irá se comportar 
+   * da mesma maneira que o if e else sem o useEffect.
+   */
+  useEffect(() => {
+    if (window.confirm('Você deseja logar?')) {
+      console.log('Sim')
+    } else {
+      console.log('Não')
+    }
+  }, [])
 
+  useEffect(() => {
+    console.log(email, password)
+  }, [email, password])
+
+  /* 
+  useEffect(() => {
+    console.log(email)
+  }, [email])
+
+  useEffect(() => {
+    console.log(password)
+  }, [password])
+ */
   const handleClick = () => {
     history.push('/')
   }
