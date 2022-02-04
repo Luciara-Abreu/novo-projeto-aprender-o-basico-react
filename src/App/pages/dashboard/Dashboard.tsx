@@ -1,12 +1,19 @@
-const Button = () => {
-  return <button> Clique aqui!</button>
-}
+import { useHistory } from 'react-router-dom';
 
 export const Dashboard = () => {
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push('/entrar')
+  }
+
   return (
     <div>
       <p>Dashboard</p>
-      <Button />
+      <div>
+        <button onClick={handleClick}>Pagina de Login</button>
+      </div>
     </div>
+
   );
 }
