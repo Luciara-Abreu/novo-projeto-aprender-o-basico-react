@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
@@ -10,10 +10,11 @@ export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEntrar = () => {
+  const handleEntrar = useCallback(() => {
     console.log(email)
     console.log(password)
-  }
+  }, [email, password]);
+
   /**
    * Se eu coloco esse if fora do useEffect a cada letra digitada nos campos de
    * input da página ele ia rodar o if e o else perguntando para o usuário se 
@@ -75,10 +76,6 @@ export const Login = () => {
           <p>Quantidade de caracteres no e-mail é: {emailLength}</p>
         </form>
       </div>
-
-
-
-
 
 
 
