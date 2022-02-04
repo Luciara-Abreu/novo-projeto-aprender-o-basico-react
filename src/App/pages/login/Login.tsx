@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 export const Login = () => {
@@ -9,11 +9,11 @@ export const Login = () => {
   //Essa linha 34 vai salvar o que digitarmos no campo input password -> onChange={e => setPassword(e.target.value)}
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const handleEntrar = () => {
     console.log(email)
     console.log(password)
   }
-
   /**
    * Se eu coloco esse if fora do useEffect a cada letra digitada nos campos de
    * input da página ele ia rodar o if e o else perguntando para o usuário se 
@@ -44,6 +44,12 @@ export const Login = () => {
     console.log(password)
   }, [password])
  */
+
+  const emailLength = useMemo(() => {
+    console.log('Executou')
+    return email.length;
+  }, [email.length])
+
   const handleClick = () => {
     history.push('/')
   }
@@ -66,6 +72,7 @@ export const Login = () => {
           <button type="button" onClick={handleEntrar}>
             Entrar
           </button>
+          <p>Quantidade de caracteres no e-mail é: {emailLength}</p>
         </form>
       </div>
 
