@@ -48,3 +48,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ----------------------------------------------------------------------------------------------------------------------
 
 Para colocar o meu site no Firebase com atualizações no github, eu segui os passos desse vídeo => https://youtu.be/eLfvY48lJQA
+Comando para atualizar as dependencias firebase deploy --only hosting
